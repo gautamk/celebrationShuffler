@@ -16,62 +16,13 @@
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
-            .model-actions{
-                visibility: hidden;
+            #teamTable th{
+                text-align: center;
             }
-            .model-row:hover .model-actions{
-                visibility: visible;
-            }
-            .popover{
-                 z-index: 12000;
+            #teamTable td{
+                text-align: center;
             }
         </style>
-        <script type="text/template" id="collectionTemplate">
-            <table class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr class="model-row">
-                        <th>FullName</th>
-                        <th>DOB</th>
-                        <th>Email</th>
-                        <th>
-                            <span class="btn-group  model-actions" >
-                                <a class="btn btn-small btn-success" href="#newDialog" role="button" data-toggle="modal">
-                                    <i class="icon-plus-sign"></i>
-                                </a>
-                                <button class="btn btn-small btn-info ModelRefresh" data-loading-text="Refreshing...">
-                                    <i class="icon-refresh"></i>
-                                </button >
-                            </span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                <% for(i in models) {%>
-                    <%
-                       var model = models[i];
-                    %>
-                    <tr class="model-row" id="<%= model.id %>">
-                        <td class="model-editable" data-key="fullname" title="double click to edit" rel="tooltip"><%= model.get("fullname") %></td>
-                        <% if(parseFloat(model.get('dob')) != NaN) { %>
-                            <td>
-                                <%= formatdata(model.get("dob"),"dd/MM/yy") %>
-                            </td>
-                        <% }else{ %>
-                            <td>nil</td>
-                        <% } %>
-                        <td title="double click to edit" rel="tooltip" class="model-editable" data-key="email"><%= model.get("email") %></td>
-                        <td class="">
-                            <span class="btn-group  model-actions" >
-                                <button class="btn btn-small btn-danger model-delete" data-modelid=<%= model.id %>    >
-                                    <i class="icon-trash"></i>
-                                </button>
-                            </span>
-                        </td>
-                    </tr>
-                <% } %>
-                </tbody>
-            </table>
-        </script>
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="css/main.css">
 
@@ -93,66 +44,35 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">OS REST</a>
+                    <a class="brand" href="#">Shuffler</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Actions<b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-header">Model actions</li>
-                                    <li>
-                                        <a href="#" class="ModelRefresh" data-loading-text="Refreshing...">
-                                            Refresh
-                                            <i class="icon-refresh"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a  href="#newDialog" role="button" data-toggle="modal">
-                                            Add new <i class="icon-plus-sign"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
-                        <form class="navbar-form pull-right">
-                            <input class="span2" type="text" placeholder="Email">
-                            <input class="span2" type="password" placeholder="Password">
-                            <button type="submit" class="btn">Sign in</button>
-                        </form>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
 
         <div class="container">
-            <div id="viewContainer">
-            </div>
+            <table id="teamTable" class="table table-striped table-bordered">
 
-            <form  class="modal  hide fade" id="newDialog" tabindex="-1" role="dialog" >
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="newDialogLabel">New Model</h3>
-                  </div>
-                  <div class="modal-body">
-                        
-                            <p><input class="span5" type="text" id="fullname" placeholder="Full Name" required></p>
-                            <p>
-                                <input class="span5" type="text" required id="dobPicker" placeholder="Date of birth"></input>
-                            </p>
-                            <p><input class="span5" type="email" id="email" placeholder="Email" required ></p>
-                        
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    <button class="btn btn-primary" id="addButton" type="submit">Add</button>
-                  </div>
-            </form>
+                <thead>
+                    <button id="shuffleButton" class="btn btn-large btn-primary">Shuffle</button>
+                    <tr>
+                        <th>Team 1</th>
+                        <th>Team 2</th>
+                        <th>Team 3</th>
+                        <th>Team 4</th>
+                        <th>Team 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
         </div> <!-- /container -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
         <script type="text/javascript" src="js/vendor/jquery-ui-1.8.23.custom.min.js"></script>
         <script type="text/javascript" src="http://bugs-test.appspot.com/common/scripts/datatype.js"></script>
